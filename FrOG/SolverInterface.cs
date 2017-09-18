@@ -6,7 +6,7 @@ namespace FrOG
 {
     internal static class SolverList
     {
-        public static List<ISolver> GetSolverList = new List<ISolver>() { new HillclimberInterface() };
+        public static List<ISolver> GetSolverList = new List<ISolver>() { new Solvers() };
 
         public static List<string> PresetNames
         {

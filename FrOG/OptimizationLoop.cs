@@ -11,6 +11,8 @@ namespace FrOG
     internal static class OptimizationLoop
     {
         //Settings
+        public static string solversettings;
+
         public static bool BolMaximize;
         public static bool BolMaxIter;
         public static int MaxIter;
@@ -74,8 +76,17 @@ namespace FrOG
 
             while (finishedRuns < Runs)
             {
-                if (_worker == null || _worker.CancellationPending) break;
-
+                //MessageBox.Show(finishedRuns.ToString());
+                if (_worker == null)
+                {
+                    //MessageBox.Show("worker is null");
+                    break;
+                }
+                if (_worker.CancellationPending)
+                {
+                    //MessageBox.Show("worker cancellation pending");
+                    break;
+                }
                 //Log
                 if (BolLog) LogName = logBaseName;
                 if (BolRuns) LogName += String.Format("_{0}", finishedRuns + 1);
@@ -85,8 +96,10 @@ namespace FrOG
 
                 //Exit if there is no result
                 if (result == null)
+                {
+                    //MessageBox.Show("result is null");
                     break;
-
+                }
                 //Check is there is a better result
                 if ((!BolMaximize && result.Value < bestResult.Value) || (BolMaximize && result.Value > bestResult.Value))
                     bestResult = result;
@@ -148,7 +161,7 @@ namespace FrOG
 
             //Run Solver
             //MessageBox.Show("Starting Solver", "FrOG Debug");
-            var bolSolverStarted = solver.RunSolver(variables, EvaluateFunction, preset, _ghInOut.ComponentFolder, _ghInOut.DocumentPath);
+            var bolSolverStarted = solver.RunSolver(variables, EvaluateFunction, preset, solversettings, _ghInOut.ComponentFolder, _ghInOut.DocumentPath);
 
             if (!bolSolverStarted)
             {
@@ -248,14 +261,14 @@ namespace FrOG
             //Maximum Evaluations reached
             if (BolMaxIter && _iterations >= MaxIter)
             {
-                _worker.CancelAsync();
+                //_worker.CancelAsync();
                 _resultType = OptimizationResult.ResultType.MaximumEvals;
                 return double.NaN;
             }
             //Maximum Duration reached
             if (BolMaxDuration && _stopwatchTotal.Elapsed.TotalSeconds >= MaxDuration)
             {
-                _worker.CancelAsync();
+                //_worker.CancelAsync();
                 _resultType = OptimizationResult.ResultType.MaximumTime;
                 return double.NaN;
             }

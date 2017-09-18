@@ -23,6 +23,7 @@ namespace FrOG
             foreach (var preset in SolverList.PresetNames) comboBoxPresets.Items.Add(preset);
             comboBoxPresets.SelectedIndex = 0;
 
+           
             //Log Default File Name
             textBoxLogName.Text = String.Format("{0}_log", DateTime.Now.ToString("yyMMdd"));
 
@@ -73,6 +74,11 @@ namespace FrOG
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            //read expert settings
+            OptimizationLoop.solversettings = textBoxExpertSettings.Text;
+
+
+
             //Lock Buttons
             ButtonStart.Enabled = false;
             buttonOK.Enabled = false;
@@ -99,7 +105,7 @@ namespace FrOG
 
             //Number of Runs
             OptimizationLoop.BolRuns = CheckBoxRuns.Checked;
-            if (CheckBoxRuns.Checked) OptimizationLoop.Runs = (int)numUpDownRuns.Value;
+            if (CheckBoxRuns.Checked) OptimizationLoop.Runs = Convert.ToInt32(numUpDownRuns.Value);
             else OptimizationLoop.Runs = 1;
 
             //Start Optimization

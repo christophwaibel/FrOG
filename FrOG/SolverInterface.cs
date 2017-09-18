@@ -80,7 +80,7 @@ namespace FrOG
         //This is where most of the work is done.
         //The constructor should do only minimal work, since all solvers are instanced when the FrOG window loads.
 
-        bool RunSolver(List<Variable> variables, Func<IList<decimal>,double> evaluate, string preset, string installFolder, string documentPath);
+        bool RunSolver(List<Variable> variables, Func<IList<decimal>,double> evaluate, string preset, string expertsettings, string installFolder, string documentPath);
 
         //Return eventual error messages to show in MessageBox after the solver stopped, otherwise return empty.
         string GetErrorMessage();

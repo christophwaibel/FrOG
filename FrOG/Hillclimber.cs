@@ -99,16 +99,20 @@ namespace FrOG
                 }
                 double fxtest = evalfnc(xtest);
 
+                if (Double.IsNaN(fxtest)) return;
+
                 if (fxtest < fx)
                 {
                     xtest.CopyTo(x, 0);
                     fx = fxtest;
+
+                    xopt = new double[n];
+                    x.CopyTo(xopt, 0);
+                    fxopt = fx;
                 }
             }
 
-            xopt = new double[n];
-            x.CopyTo(xopt, 0);
-            fxopt = fx;
+           
 
         }
 

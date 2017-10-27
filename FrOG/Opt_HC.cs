@@ -30,15 +30,9 @@ namespace FrOG
         public Opt_HC()
         {
             var HC_Settings = new Dictionary<string, double>{
-                {"popsize", 22},
-                {"maxgen", 2000},
                 { "itermax", 10000},
                 { "seed", 1},
-                { "k", 14.43},
-                { "pcross", 0.893},
-                { "pmut", 0.646},
-                { "d", 0.076},
-                { "r", 0.195}
+                { "stepsize", 1}
             };
 
             _presets.Add("HC", HC_Settings);
@@ -86,8 +80,8 @@ namespace FrOG
                     var seed = (int)settings["seed"];
                     var stepsize = settings["stepsize"];
                     var itermax = (int)settings["itermax"];
-                    var hc = new Hillclimber_Algorithm(lb, ub, stepsize, itermax, eval, seed);
-                    hc.Solve();
+                    var hc = new MetaheuristicsLibrary.SolversSO.Hillclimber(lb, ub, integer, itermax, eval, seed, stepsize);
+                    hc.solve();
                     Xopt = hc.get_Xoptimum();
                     Fxopt = hc.get_fxoptimum();
                 }

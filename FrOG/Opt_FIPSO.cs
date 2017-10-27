@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * Opt_ES.cs
+ * Opt_PSO.cs
  * Copyright 2017 Christoph Waibel <chwaibel@student.ethz.ch>
  * 
  * This work is licensed under the GNU GPL license version 3 or later.
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace FrOG
 {
-    public class Opt_ES : ISolver
+    public class Opt_FIPSO : ISolver
     {
         /// <summary>
         /// Variable vector of final solution.
@@ -28,23 +28,22 @@ namespace FrOG
 
         private readonly Dictionary<string, Dictionary<string, double>> _presets = new Dictionary<string, Dictionary<string, double>>();
 
-        public Opt_ES()
+        public Opt_FIPSO()
         {
             //Prepare settings
-            var ES_Settings = new Dictionary<string, double>{
-                {"popsize", 20},
-                { "itermax", 10000},
+            var FIPSO_Settings = new Dictionary<string, double>{
+                {"popsize", 24},
                 { "seed", 1},
-                {"lambda", 20},         //offspring
-                {"roh", 2},             //mixing nr.
-                {"s", 0.5},             //stepsize s
-                {"s0", 1.0},            //initial stepsize s0
-                {"tauc", 1.0},            //learning rate tau
-                {"pmut_int", 0.1},      //mutation probability, only for integer
-                {"x0samplingmode", 0}   // 0 = uniform, 1 = gaussian
+                { "itermax", 10000},
+                {"chi", 0.1},           // constriction coefficient
+                {"phi", 4.0},           // attraction to best particle 
+                {"v0max", 0.2},         // max velocity at initialisation. fraction of domain.
+                {"x0samplingmode", 0},  // 0 = uniform, 1 = gaussian
+                {"pxupdatemode", 0},    //0 = update after population. 1 = update after each evaluation
+                {"s0", 1.0}             //initial sampling step size, only for gaussian initialization
             };
 
-            _presets.Add("ES", ES_Settings);
+            _presets.Add("FIPSO", FIPSO_Settings);
         }
 
         public bool RunSolver(List<Variable> variables, Func<IList<decimal>, double> evaluate, string preset, string expertsettings, string installFolder, string documentPath)
@@ -84,17 +83,16 @@ namespace FrOG
 
             try
             {
-                if (preset.Equals("ES"))
+                if (preset.Equals("FIPSO"))
                 {
-                    Dictionary<string, object> ESsettings = new Dictionary<string, object>();
-                    ESsettings.Add("popsize", (int)settings["popsize"]);
-                    ESsettings.Add("lambda", (int)settings["lambda"]);
-                    ESsettings.Add("roh", (int)settings["roh"]);
-                    ESsettings.Add("s", settings["s"]);
-                    ESsettings.Add("s0", settings["s0"]);
-                    ESsettings.Add("tauc", settings["tauc"]);
-                    ESsettings.Add("pmut_int", settings["pmut_int"]);
-                    ESsettings.Add("x0samplingmode", (int)settings["x0samplingmode"]);
+                    Dictionary<string, object> FIPSOsettings = new Dictionary<string, object>();    
+                    FIPSOsettings.Add("popsize", (int)settings["popsize"]);
+                    FIPSOsettings.Add("chi", settings["chi"]);
+                    FIPSOsettings.Add("phi", settings["phi"]);
+                    FIPSOsettings.Add("v0max", settings["v0max"]);
+                    FIPSOsettings.Add("x0samplingmode", (int)settings["x0samplingmode"]);
+                    FIPSOsettings.Add("pxupdatemode", (int)settings["pxupdatemode"]);
+                    FIPSOsettings.Add("s0", settings["s0"]);
                     int seed;
                     if (seedin != null)
                     {
@@ -106,13 +104,13 @@ namespace FrOG
                     }
                     int itermax = (int)settings["itermax"];
 
-                    var es = new MetaheuristicsLibrary.SolversSO.SimpleES(lb, ub, integer, itermax, eval, seed, ESsettings);
-                    es.solve();
-                    Xopt = es.get_Xoptimum();
-                    Fxopt = es.get_fxoptimum();
+                    var fipso = new MetaheuristicsLibrary.SolversSO.FIPSO(lb, ub, integer, itermax, eval, seed, FIPSOsettings);
+                    fipso.solve();
+                    Xopt = fipso.get_Xoptimum();
+                    Fxopt = fipso.get_fxoptimum();
                 }
                 return true;
-            }                
+            }
             catch
             {
                 return false;

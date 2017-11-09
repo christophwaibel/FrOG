@@ -31,20 +31,51 @@ namespace FrOG
         public Opt_ES()
         {
             //Prepare settings
-            var ES_Settings = new Dictionary<string, double>{
-                {"popsize", 20},
+            var ES_Settings_n4_A = new Dictionary<string, double>{
                 { "itermax", 10000},
                 { "seed", 1},
-                {"lambda", 20},         //offspring
-                {"roh", 2},             //mixing nr.
-                {"s", 0.5},             //stepsize s
-                {"s0", 1.0},            //initial stepsize s0
-                {"tauc", 1.0},            //learning rate tau
-                {"pmut_int", 0.1},      //mutation probability, only for integer
-                {"x0samplingmode", 0}   // 0 = uniform, 1 = gaussian
+                {"popsize", 25},
+                {"lambda", 5},          //offspring
+                {"roh", 4},             //mixing nr.
+                {"x0sampling", 1},      // 0 = uniform, 1 = gaussian
+                {"stepsize0", 9.82254}, //initial stepsize s0
+                {"stepsize", 0.0946},   //stepsize s
+                {"tauc", 1.91772},      //learning rate tau
+                {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
+                {"pmut_int", 0.5}       //mutation probability, only for integer
             };
 
-            _presets.Add("ES", ES_Settings);
+            var ES_Settings_n4_B = new Dictionary<string, double>{
+                { "itermax", 10000},
+                { "seed", 1},
+                {"popsize", 6},
+                {"lambda", 4},          //offspring
+                {"roh", 4},             //mixing nr.
+                {"x0sampling", 0},      // 0 = uniform, 1 = gaussian
+                {"stepsize0", 0.40684}, //initial stepsize s0
+                {"stepsize", 1.65921},   //stepsize s
+                {"tauc", 1.94483},      //learning rate tau
+                {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
+                {"pmut_int", 0.5}       //mutation probability, only for integer
+            };
+
+            var ES_Settings_n4_C = new Dictionary<string, double>{
+                { "itermax", 10000},
+                { "seed", 1},
+                {"popsize", 200},
+                {"lambda", 194},        //offspring
+                {"roh", 1},             //mixing nr.
+                {"x0sampling", 1},      // 0 = uniform, 1 = gaussian
+                {"stepsize0", 9.57477}, //initial stepsize s0
+                {"stepsize", 0.01},   //stepsize s
+                {"tauc", 2.92927},      //learning rate tau
+                {"selmode", 0},         //mating selection mode. 0 = random, 1 = tournament
+                {"pmut_int", 0.5}       //mutation probability, only for integer
+            };
+
+            _presets.Add("ES_n4_A", ES_Settings_n4_A);
+            _presets.Add("ES_n4_B", ES_Settings_n4_B);
+            _presets.Add("ES_n4_C", ES_Settings_n4_C);
         }
 
         public bool RunSolver(List<Variable> variables, Func<IList<decimal>, double> evaluate, string preset, string expertsettings, string installFolder, string documentPath)
@@ -84,17 +115,19 @@ namespace FrOG
 
             try
             {
-                if (preset.Equals("ES"))
+                if (preset.Equals("ES_n4_A") || preset.Equals("ES_n4_B") || preset.Equals("ES_n4_C"))
                 {
                     Dictionary<string, object> ESsettings = new Dictionary<string, object>();
                     ESsettings.Add("popsize", (int)settings["popsize"]);
                     ESsettings.Add("lambda", (int)settings["lambda"]);
                     ESsettings.Add("roh", (int)settings["roh"]);
-                    ESsettings.Add("s", settings["s"]);
-                    ESsettings.Add("s0", settings["s0"]);
+                    ESsettings.Add("x0sampling", (int)settings["x0sampling"]); 
+                    ESsettings.Add("stepsize0", settings["stepsize0"]);
+                    ESsettings.Add("stepsize", settings["stepsize"]);
                     ESsettings.Add("tauc", settings["tauc"]);
+                    ESsettings.Add("selmode", (int)settings["selmode"]);
                     ESsettings.Add("pmut_int", settings["pmut_int"]);
-                    ESsettings.Add("x0samplingmode", (int)settings["x0samplingmode"]);
+ 
                     int seed;
                     if (seedin != null)
                     {

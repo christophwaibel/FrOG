@@ -29,19 +29,62 @@ namespace FrOG
 
         public Opt_SGA()
         {
-            var SGA_Settings_n4 = new Dictionary<string, double>{
-                {"popsize", 22},
+            var SGA_Settings_WW = new Dictionary<string, double>{
                 {"maxgen", 2000},
                 { "itermax", 10000},
                 { "seed", 1},
-                { "k", 14.43},
-                { "pcross", 0.893},
-                { "pmut", 0.646},
-                { "d", 0.076},
-                { "r", 0.195}
+                { "popsize", 14},
+                { "k", 11},
+                { "pcross", 1},
+                { "pmut", 0.2},
+                { "d", 0.01},
+                { "r", 0.2},
+                { "elite", 1}
             };
 
-            _presets.Add("SGA_n4", SGA_Settings_n4);
+            var SGA_Settings_n4_A = new Dictionary<string, double>{
+                {"maxgen", 2000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 14},
+                { "k", 21.93823},
+                { "pcross", 0.99301},
+                { "pmut", 1},
+                { "d", 0.01159},
+                { "r", 0.15604},
+                { "elite", 2}
+            };
+
+            var SGA_Settings_n4_B = new Dictionary<string, double>{
+                {"maxgen", 2000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 6},
+                { "k", 36.7352},
+                { "pcross", 0.87624},
+                { "pmut", 0.8189},
+                { "d", 0.63072},
+                { "r", 1.75361},
+                { "elite", 1}
+            };
+
+            var SGA_Settings_n4_C = new Dictionary<string, double>{
+                {"maxgen", 2000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 10},
+                { "k", 2.24439},
+                { "pcross", 0.97974},
+                { "pmut", 1},
+                { "d", 1.74528},
+                { "r", 0.01},
+                { "elite", 1}
+            };
+
+            _presets.Add("SGA_WW", SGA_Settings_WW);
+            _presets.Add("SGA_n4_A", SGA_Settings_n4_A);
+            _presets.Add("SGA_n4_B", SGA_Settings_n4_B);
+            _presets.Add("SGA_n4_C", SGA_Settings_n4_C);
         }
 
         public bool RunSolver(List<Variable> variables, Func<IList<decimal>, double> evaluate, string preset, string expertsettings, string installFolder, string documentPath)
@@ -81,7 +124,7 @@ namespace FrOG
 
             try
             {
-                if (preset.Equals("SGA_n4"))
+                if (preset.Equals("SGA_n4_A") || preset.Equals("SGA_n4_B") || preset.Equals("SGA_n4_C") || preset.Equals("SGA_WW"))
                 {
                     Dictionary<string, object> GAsettings = new Dictionary<string, object>();
                     GAsettings.Add("maxgen", (int)settings["maxgen"]);
@@ -91,6 +134,7 @@ namespace FrOG
                     GAsettings.Add("pmut", settings["pmut"]);
                     GAsettings.Add("d", settings["d"]);
                     GAsettings.Add("r", settings["r"]);
+                    GAsettings.Add("elite", settings["elite"]);
                     int seed;
                     if (seedin != null)
                     {

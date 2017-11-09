@@ -85,14 +85,14 @@ namespace FrOG
             {
                 if (preset.Equals("FIPSO"))
                 {
-                    Dictionary<string, object> FIPSOsettings = new Dictionary<string, object>();    
-                    FIPSOsettings.Add("popsize", (int)settings["popsize"]);
-                    FIPSOsettings.Add("chi", settings["chi"]);
-                    FIPSOsettings.Add("phi", settings["phi"]);
-                    FIPSOsettings.Add("v0max", settings["v0max"]);
-                    FIPSOsettings.Add("x0samplingmode", (int)settings["x0samplingmode"]);
-                    FIPSOsettings.Add("pxupdatemode", (int)settings["pxupdatemode"]);
-                    FIPSOsettings.Add("s0", settings["s0"]);
+                    Dictionary<string, object> PSOsettings = new Dictionary<string, object>();    
+                    PSOsettings.Add("popsize", (int)settings["popsize"]);
+                    PSOsettings.Add("chi", settings["chi"]);
+                    PSOsettings.Add("phi", settings["phi"]);
+                    PSOsettings.Add("v0max", settings["v0max"]);
+                    PSOsettings.Add("x0samplingmode", (int)settings["x0samplingmode"]);
+                    PSOsettings.Add("pxupdatemode", (int)settings["pxupdatemode"]);
+                    PSOsettings.Add("s0", settings["s0"]);
                     int seed;
                     if (seedin != null)
                     {
@@ -104,10 +104,10 @@ namespace FrOG
                     }
                     int itermax = (int)settings["itermax"];
 
-                    var fipso = new MetaheuristicsLibrary.SolversSO.FIPSO(lb, ub, integer, itermax, eval, seed, FIPSOsettings);
-                    fipso.solve();
-                    Xopt = fipso.get_Xoptimum();
-                    Fxopt = fipso.get_fxoptimum();
+                    var pso = new MetaheuristicsLibrary.SolversSO.PSO(lb, ub, integer, itermax, eval, seed, PSOsettings);
+                    pso.solve();
+                    Xopt = pso.get_Xoptimum();
+                    Fxopt = pso.get_fxoptimum();
                 }
                 return true;
             }

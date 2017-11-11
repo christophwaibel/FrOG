@@ -8,7 +8,6 @@ FrOG handles all interactions with Grasshopper and provides a GUI.
 How to use the component: 
 <br>
 - Copy the FrOG.gha and the MetaheuristicsLibrary.dll into your Grasshopper components folder (open Rhino, enter "GrasshopperFolders", "Components" into your console).
-- Copy the GalapagosLibrary.dll into your other Grasshopper components folder (navigate to "C:\Program Files\Common Files\McNeel\Rhinoceros\5.0\Plug-ins\", find your local Grasshopper components folder, e.g. "Grasshopper (b45a29b1-4343-4035-989e-044e8580d9cf)\0.9.76.0\Components") 
 - Start Rhino Grasshopper, find the FrOG component under Params, Util 
 
 <br><br>

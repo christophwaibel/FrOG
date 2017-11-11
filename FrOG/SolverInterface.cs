@@ -11,7 +11,7 @@ namespace FrOG
         { 
             new Opt_SGA(), 
             new Opt_HC(), 
-            new Opt_FIPSO(),
+            new Opt_PSO(),
             new Opt_ES()
         };
 

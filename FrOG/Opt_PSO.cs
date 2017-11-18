@@ -63,6 +63,36 @@ namespace FrOG
             };
 
             //cluster 1
+            var FIPSO_settings_n13_A = new Dictionary<string, double>
+            {
+                {"popsize", 21},
+                {"chi", 0.29263},
+                {"phi", 12.33794},
+                {"v0max", 2.16909},
+                {"pxupdatemode", 0},
+                {"psomode", 0},
+                {"phi1", 0},        //not used
+                {"phi2", 0},        //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
+            //cluster 1
+            var FIPSO_settings_n13_B = new Dictionary<string, double>
+            {
+                {"popsize", 19},
+                {"chi", 0.21773},
+                {"phi", 15.98247},
+                {"v0max", 13.30176},
+                {"pxupdatemode", 0},
+                {"psomode", 0},
+                {"phi1", 0},        //not used
+                {"phi2", 0},        //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
+            //cluster 1
             var PSO_settings_n4_A = new Dictionary<string, double>
             {
                 {"popsize", 55},
@@ -92,10 +122,44 @@ namespace FrOG
                 {"seed", 1}
             };
 
+            //cluster 1
+            var PSO_settings_n13_A = new Dictionary<string, double>
+            {
+                {"popsize", 77},
+                {"chi", 0.001},
+                {"v0max", 7.95894},
+                {"pxupdatemode", 0},
+                {"psomode", 1},
+                {"phi1", 0.39117},
+                {"phi2",1.87862},
+                {"phi", 0},         //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
+            //cluster 3
+            var PSO_settings_n13_B = new Dictionary<string, double>
+            {
+                {"popsize", 28},
+                {"chi", 0.38039},
+                {"v0max", 0.38071},
+                {"pxupdatemode", 1},
+                {"psomode", 2},
+                {"phi1", 4.85176},
+                {"phi2",3.46346},
+                {"phi", 0},         //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
             _presets.Add("FIPSO_n4_A", FIPSO_settings_n4_A);
             _presets.Add("FIPSO_n4_B", FIPSO_settings_n4_B);
+            _presets.Add("FIPSO_n13_A", FIPSO_settings_n13_A);
+            _presets.Add("FIPSO_n13_B", FIPSO_settings_n13_B);
             _presets.Add("PSO_n4_A", PSO_settings_n4_A);
             _presets.Add("PSO_n4_B", PSO_settings_n4_B);
+            _presets.Add("PSO_n13_A", PSO_settings_n13_A);
+            _presets.Add("PSO_n13_B", PSO_settings_n13_B);
         }
 
         public bool RunSolver(List<Variable> variables, Func<IList<decimal>, double> evaluate, string preset, string expertsettings, string installFolder, string documentPath)
@@ -135,7 +199,10 @@ namespace FrOG
 
             try
             {
-                if (preset.Equals("FIPSO_n4_A") || preset.Equals("FIPSO_n4_B") || preset.Equals("PSO_n4_A") || preset.Equals("PSO_n4_B"))
+                if (preset.Equals("FIPSO_n4_A") || preset.Equals("FIPSO_n4_B")
+                    || preset.Equals("FIPSO_n13_A") || preset.Equals("FIPSO_n13_B")
+                    || preset.Equals("PSO_n4_A") || preset.Equals("PSO_n4_B") 
+                    || preset.Equals("PSO_n13_A") || preset.Equals("PSO_n13_B"))
                 {
                     Dictionary<string, object> PSOsettings = new Dictionary<string, object>();    
                     PSOsettings.Add("popsize", (int)settings["popsize"]);

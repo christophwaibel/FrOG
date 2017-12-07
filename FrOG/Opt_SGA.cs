@@ -68,16 +68,30 @@ namespace FrOG
                 { "elite", 1}
             };
 
-            var SGA_Settings_n4_C = new Dictionary<string, double>{
+            var SGA_Settings_n11_A = new Dictionary<string, double>{
                 {"maxgen", 10000},
                 { "itermax", 10000},
                 { "seed", 1},
-                { "popsize", 10},
-                { "k", 2.24439},
-                { "pcross", 0.97974},
-                { "pmut", 1},
-                { "d", 1.74528},
-                { "r", 0.01},
+                { "popsize", 6},
+                { "k", 99.78889},
+                { "pcross", 0.97875},
+                { "pmut", 0.9781},
+                { "d", 0.13499},
+                { "r", 1.95781},
+                { "elite", 1}
+            };
+
+            //cluster C
+            var SGA_Settings_n11_B = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 6},
+                { "k", 47.43024},
+                { "pcross", 0.98116},
+                { "pmut", 0.99377},
+                { "d", 0.01},
+                { "r", 0.30406},
                 { "elite", 1}
             };
 
@@ -95,11 +109,28 @@ namespace FrOG
                 { "elite", 1}
             };
 
+            //cluster 2
+            var SGA_Settings_n13_B = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 6},
+                { "k", 87.72228},
+                { "pcross", 0.83724},
+                { "pmut", 1},
+                { "d", 0.15312},
+                { "r", 1.95743},
+                { "elite", 1}
+            };
+
+
             _presets.Add("SGA_WW", SGA_Settings_WW);
-            //_presets.Add("SGA_n4_A", SGA_Settings_n4_A);
+            _presets.Add("SGA_n4_A", SGA_Settings_n4_A);
             _presets.Add("SGA_n4_B", SGA_Settings_n4_B);
-            //_presets.Add("SGA_n4_C", SGA_Settings_n4_C);
+            _presets.Add("SGA_n11_A", SGA_Settings_n11_A);
+            _presets.Add("SGA_n11_B", SGA_Settings_n11_B);
             _presets.Add("SGA_n13_A", SGA_Settings_n13_A);
+            _presets.Add("SGA_n13_B", SGA_Settings_n13_B);
         }
 
         public bool RunSolver(List<Variable> variables, Func<IList<decimal>, double> evaluate, string preset, string expertsettings, string installFolder, string documentPath)
@@ -139,9 +170,10 @@ namespace FrOG
 
             try
             {
-                if (preset.Equals("SGA_n4_A") || preset.Equals("SGA_n4_B") || preset.Equals("SGA_n4_C") || 
+                if (preset.Equals("SGA_n4_A") || preset.Equals("SGA_n4_B") || 
                     preset.Equals("SGA_WW") ||
-                    preset.Equals("SGA_n13_A"))
+                    preset.Equals("SGA_n11_A") || preset.Equals("SGA_n11_B") ||
+                    preset.Equals("SGA_n13_A") || preset.Equals("SGA_n13_B"))
                 {
                     Dictionary<string, object> GAsettings = new Dictionary<string, object>();
                     GAsettings.Add("maxgen", (int)settings["maxgen"]);
@@ -159,7 +191,8 @@ namespace FrOG
                     }
                     else
                     {
-                        seed = (int)settings["seed"];
+                        Random rnd = new Random();
+                        seed = rnd.Next();
                     }
                     int itermax = (int)settings["itermax"];
 

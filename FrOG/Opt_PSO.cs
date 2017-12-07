@@ -93,15 +93,45 @@ namespace FrOG
             };
 
             //cluster 1
+            var FIPSO_settings_n18_A = new Dictionary<string, double>
+            {
+                {"popsize", 29},
+                {"chi", 0.32903},
+                {"phi", 10.87919},
+                {"v0max", 11.24591},
+                {"pxupdatemode", 0},
+                {"psomode", 0},
+                {"phi1", 0},        //not used
+                {"phi2", 0},        //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
+            //cluster 1
+            var FIPSO_settings_n18_B = new Dictionary<string, double>
+            {
+                {"popsize", 18},
+                {"chi", 0.30845},
+                {"phi", 11.57784},
+                {"v0max", 19.9856},
+                {"pxupdatemode", 1},
+                {"psomode", 0},
+                {"phi1", 0},        //not used
+                {"phi2", 0},        //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
+            //cluster 1
             var PSO_settings_n4_A = new Dictionary<string, double>
             {
-                {"popsize", 55},
-                {"chi", 0.001},
-                {"v0max", 10.6235},
+                {"popsize", 17},
+                {"chi", 0.28889},
+                {"v0max", 0},
                 {"pxupdatemode", 0},
-                {"psomode", 1},
-                {"phi1", 1.44653},
-                {"phi2",1.46098},
+                {"psomode", 2},
+                {"phi1", 4.745},
+                {"phi2",4.75793},
                 {"phi", 0},         //not used
                 { "itermax", 10000},
                 {"seed", 1}
@@ -110,13 +140,13 @@ namespace FrOG
             //cluster 2
             var PSO_settings_n4_B = new Dictionary<string, double>
             {
-                {"popsize", 10},
-                {"chi", 0.3386},
-                {"v0max", 0.65278},
+                {"popsize", 15},
+                {"chi", 0.33667},
+                {"v0max", 0.18927},
                 {"pxupdatemode", 0},
                 {"psomode", 2},
-                {"phi1", 5.0},
-                {"phi2",5.0},
+                {"phi1", 4.11204},
+                {"phi2",5},
                 {"phi", 0},         //not used
                 { "itermax", 10000},
                 {"seed", 1}
@@ -125,13 +155,13 @@ namespace FrOG
             //cluster 1
             var PSO_settings_n13_A = new Dictionary<string, double>
             {
-                {"popsize", 77},
-                {"chi", 0.001},
-                {"v0max", 7.95894},
+                {"popsize", 38},
+                {"chi", 0.32361},
+                {"v0max", 0},
                 {"pxupdatemode", 0},
-                {"psomode", 1},
-                {"phi1", 0.39117},
-                {"phi2",1.87862},
+                {"psomode", 2},
+                {"phi1", 2.40854},
+                {"phi2",4.99429},
                 {"phi", 0},         //not used
                 { "itermax", 10000},
                 {"seed", 1}
@@ -140,13 +170,13 @@ namespace FrOG
             //cluster 3
             var PSO_settings_n13_B = new Dictionary<string, double>
             {
-                {"popsize", 28},
-                {"chi", 0.38039},
-                {"v0max", 0.38071},
+                {"popsize", 30},
+                {"chi", 0.39712},
+                {"v0max", 0.05514},
                 {"pxupdatemode", 1},
                 {"psomode", 2},
-                {"phi1", 4.85176},
-                {"phi2",3.46346},
+                {"phi1", 4.82129},
+                {"phi2",3.26303},
                 {"phi", 0},         //not used
                 { "itermax", 10000},
                 {"seed", 1}
@@ -156,6 +186,8 @@ namespace FrOG
             _presets.Add("FIPSO_n4_B", FIPSO_settings_n4_B);
             _presets.Add("FIPSO_n13_A", FIPSO_settings_n13_A);
             _presets.Add("FIPSO_n13_B", FIPSO_settings_n13_B);
+            _presets.Add("FIPSO_n18_A", FIPSO_settings_n18_A);
+            _presets.Add("FIPSO_n18_B", FIPSO_settings_n18_B);
             _presets.Add("PSO_n4_A", PSO_settings_n4_A);
             _presets.Add("PSO_n4_B", PSO_settings_n4_B);
             _presets.Add("PSO_n13_A", PSO_settings_n13_A);
@@ -201,6 +233,7 @@ namespace FrOG
             {
                 if (preset.Equals("FIPSO_n4_A") || preset.Equals("FIPSO_n4_B")
                     || preset.Equals("FIPSO_n13_A") || preset.Equals("FIPSO_n13_B")
+                    || preset.Equals("FIPSO_n18_A") || preset.Equals("FIPSO_n18_B")
                     || preset.Equals("PSO_n4_A") || preset.Equals("PSO_n4_B") 
                     || preset.Equals("PSO_n13_A") || preset.Equals("PSO_n13_B"))
                 {
@@ -220,7 +253,8 @@ namespace FrOG
                     }
                     else
                     {
-                        seed = (int)settings["seed"];
+                        Random rnd = new Random();
+                        seed = rnd.Next();
                     }
                     int itermax = (int)settings["itermax"];
 

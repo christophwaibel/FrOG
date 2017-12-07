@@ -38,8 +38,8 @@ namespace FrOG
                 {"lambda", 5},          //offspring
                 {"roh", 4},             //mixing nr.
                 {"x0sampling", 1},      // 0 = uniform, 1 = gaussian
-                {"stepsize0", 9.82254}, //initial stepsize s0
-                {"stepsize", 0.0946},   //stepsize s
+                {"stepsize0",  9.82254}, //initial stepsize s0
+                {"stepsize",  0.0946},   //stepsize s
                 {"tauc", 1.91772},      //learning rate tau
                 {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
                 {"pmut_int", 0.5}       //mutation probability, only for integer
@@ -59,23 +59,38 @@ namespace FrOG
                 {"pmut_int", 0.5}       //mutation probability, only for integer
             };
 
-            var ES_Settings_n4_C = new Dictionary<string, double>{
+            var ES_Settings_n13_A = new Dictionary<string, double>{
                 { "itermax", 10000},
                 { "seed", 1},
-                {"popsize", 200},
-                {"lambda", 194},        //offspring
-                {"roh", 1},             //mixing nr.
-                {"x0sampling", 1},      // 0 = uniform, 1 = gaussian
-                {"stepsize0", 9.57477}, //initial stepsize s0
-                {"stepsize", 0.01},   //stepsize s
-                {"tauc", 2.92927},      //learning rate tau
-                {"selmode", 0},         //mating selection mode. 0 = random, 1 = tournament
+                {"popsize", 3},
+                {"lambda", 1},          //offspring
+                {"roh", 2},             //mixing nr.
+                {"x0sampling", 0},      // 0 = uniform, 1 = gaussian
+                {"stepsize0", 10}, //initial stepsize s0
+                {"stepsize", 1.83897},   //stepsize s
+                {"tauc", 0.01},      //learning rate tau
+                {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
+                {"pmut_int", 0.5}       //mutation probability, only for integer
+            };
+
+            var ES_Settings_n13_B = new Dictionary<string, double>{
+                { "itermax", 10000},
+                { "seed", 1},
+                {"popsize", 16},
+                {"lambda", 6},          //offspring
+                {"roh", 7},             //mixing nr.
+                {"x0sampling", 0},      // 0 = uniform, 1 = gaussian
+                {"stepsize0", 0.01}, //initial stepsize s0
+                {"stepsize", 0.41785},   //stepsize s
+                {"tauc", 1.53637},      //learning rate tau
+                {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
                 {"pmut_int", 0.5}       //mutation probability, only for integer
             };
 
             _presets.Add("ES_n4_A", ES_Settings_n4_A);
             _presets.Add("ES_n4_B", ES_Settings_n4_B);
-            _presets.Add("ES_n4_C", ES_Settings_n4_C);
+            _presets.Add("ES_n13_A", ES_Settings_n13_A);
+            _presets.Add("ES_n13_B", ES_Settings_n13_B);
         }
 
         public bool RunSolver(List<Variable> variables, Func<IList<decimal>, double> evaluate, string preset, string expertsettings, string installFolder, string documentPath)
@@ -115,7 +130,8 @@ namespace FrOG
 
             try
             {
-                if (preset.Equals("ES_n4_A") || preset.Equals("ES_n4_B") || preset.Equals("ES_n4_C"))
+                if (preset.Equals("ES_n4_A") || preset.Equals("ES_n4_B") ||
+                    preset.Equals("ES_n13_A") || preset.Equals("ES_n13_B"))
                 {
                     Dictionary<string, object> ESsettings = new Dictionary<string, object>();
                     ESsettings.Add("popsize", (int)settings["popsize"]);
@@ -135,7 +151,8 @@ namespace FrOG
                     }
                     else
                     {
-                        seed = (int)settings["seed"];
+                        Random rnd = new Random();
+                        seed = rnd.Next();
                     }
                     int itermax = (int)settings["itermax"];
 

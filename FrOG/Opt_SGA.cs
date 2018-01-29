@@ -68,6 +68,34 @@ namespace FrOG
                 { "elite", 1}
             };
 
+
+            var SGA_Settings_n10_A = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 6},
+                { "k", 100	},
+                { "pcross", 1	},
+                { "pmut", 0.99096	},
+                { "d", 0.20025	},
+                { "r", 2},
+                { "elite", 1}
+            };
+
+            var SGA_Settings_n10_B = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 6},
+                { "k", 56.18049	},
+                { "pcross", 0.94492	},
+                { "pmut", 1	},
+                { "d", 0.02486	},
+                { "r", 0.34472},
+                { "elite", 1}
+            };
+
+
             var SGA_Settings_n11_A = new Dictionary<string, double>{
                 {"maxgen", 10000},
                 { "itermax", 10000},
@@ -124,13 +152,99 @@ namespace FrOG
             };
 
 
+            var SGA_Settings_n18_A = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 6},
+                { "k", 38.43099		},
+                { "pcross", 0.91426		},
+                { "pmut", 0.34708		},
+                { "d", 0.16828	},
+                { "r", 1.99964},
+                { "elite", 1}
+            };
+
+            var SGA_Settings_n18_B = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 8},
+                { "k", 49.75156	},
+                { "pcross", 1	},
+                { "pmut", 0.93683	},
+                { "d", 0.02792	},
+                { "r", 0.1684},
+                { "elite", 1}
+            };
+
+            var SGA_Settings_n20_A = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 6},
+                { "k", 64.03848		},
+                { "pcross", 0.62591	},
+                { "pmut", 0.58272	},
+                { "d", 0.59928	},
+                { "r", 1.98094},
+                { "elite", 1}
+            };
+
+            var SGA_Settings_n20_B = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 6},
+                { "k", 46.52308		},
+                { "pcross", 0.96612		},
+                { "pmut", 1	},
+                { "d", 0.01	},
+                { "r", 0.18896},
+                { "elite", 1}
+            };
+
+            var SGA_Settings_n35_A = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 6},
+                { "k", 98.63338	},
+                { "pcross", 0.88198	},
+                { "pmut", 0.71459	},
+                { "d", 0.24522	},
+                { "r", 1.02556},
+                { "elite", 1}
+            };
+
+            var SGA_Settings_n35_B = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 16},
+                { "k", 1},
+                { "pcross", 	1	},
+                { "pmut", 0.87128	},
+                { "d", 0.01	},
+                { "r", 0.04092},
+                { "elite", 2}
+            };
+
             _presets.Add("SGA_WW", SGA_Settings_WW);
             _presets.Add("SGA_n4_A", SGA_Settings_n4_A);
             _presets.Add("SGA_n4_B", SGA_Settings_n4_B);
+            _presets.Add("SGA_n10_A", SGA_Settings_n10_A);
+            _presets.Add("SGA_n10_B", SGA_Settings_n10_B);
             _presets.Add("SGA_n11_A", SGA_Settings_n11_A);
             _presets.Add("SGA_n11_B", SGA_Settings_n11_B);
             _presets.Add("SGA_n13_A", SGA_Settings_n13_A);
             _presets.Add("SGA_n13_B", SGA_Settings_n13_B);
+            _presets.Add("SGA_n18_A", SGA_Settings_n18_A);
+            _presets.Add("SGA_n18_B", SGA_Settings_n18_B);
+            _presets.Add("SGA_n20_A", SGA_Settings_n20_A);
+            _presets.Add("SGA_n20_B", SGA_Settings_n20_B);
+            _presets.Add("SGA_n35_A", SGA_Settings_n35_A);
+            _presets.Add("SGA_n35_B", SGA_Settings_n35_B);
         }
 
         public bool RunSolver(List<Variable> variables, Func<IList<decimal>, double> evaluate, string preset, string expertsettings, string installFolder, string documentPath)
@@ -172,8 +286,12 @@ namespace FrOG
             {
                 if (preset.Equals("SGA_n4_A") || preset.Equals("SGA_n4_B") || 
                     preset.Equals("SGA_WW") ||
+                    preset.Equals("SGA_n10_A") || preset.Equals("SGA_n10_B") ||
                     preset.Equals("SGA_n11_A") || preset.Equals("SGA_n11_B") ||
-                    preset.Equals("SGA_n13_A") || preset.Equals("SGA_n13_B"))
+                    preset.Equals("SGA_n13_A") || preset.Equals("SGA_n13_B") ||
+                    preset.Equals("SGA_n18_A") || preset.Equals("SGA_n18_B") ||
+                    preset.Equals("SGA_n20_A") || preset.Equals("SGA_n20_B") ||
+                    preset.Equals("SGA_n35_A") || preset.Equals("SGA_n35_B"))
                 {
                     Dictionary<string, object> GAsettings = new Dictionary<string, object>();
                     GAsettings.Add("maxgen", (int)settings["maxgen"]);

@@ -4,12 +4,22 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Threading.Tasks;
+using Grasshopper.GUI;
 
 namespace FrOG
 {
     public partial class OptimizationWindow : Form
     {
         private readonly OptimizationComponent _frogComponent;
+
+        internal enum GrasshopperStates
+        {
+            RequestSent,
+            RequestProcessing,
+            RequestProcessed
+        }
+        internal GrasshopperStates GrasshopperStatus;
 
         public OptimizationWindow(OptimizationComponent component)
         {
@@ -49,7 +59,7 @@ namespace FrOG
             //Initilize Backgroundworker
             //http://www.codeproject.com/Articles/634146/Background-Thread-Let-me-count-the-ways
             backgroundWorkerSolver.DoWork += OptimizationLoop.RunOptimizationLoopMultiple;
-            backgroundWorkerSolver.ProgressChanged += UpdateChart;
+            backgroundWorkerSolver.ProgressChanged += ProgressChangedHandler;
             backgroundWorkerSolver.RunWorkerCompleted += ReleaseButtons;
             backgroundWorkerSolver.WorkerReportsProgress = true;
             backgroundWorkerSolver.WorkerSupportsCancellation = true;
@@ -74,10 +84,12 @@ namespace FrOG
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            //read expert settings
+            //Disable GUI        
+            GH_DocumentEditor ghCanvas = Owner as GH_DocumentEditor;
+            ghCanvas.DisableUI();
+
+            //Read expert settings
             OptimizationLoop.solversettings = textBoxExpertSettings.Text;
-
-
 
             //Lock Buttons
             ButtonStart.Enabled = false;
@@ -97,8 +109,6 @@ namespace FrOG
             OptimizationLoop.BolLog = CheckBoxLog.Checked;
             if (CheckBoxLog.Checked) OptimizationLoop.LogName = textBoxLogName.Text;
 
-            //OptimizationLoop.SaveStateName = textBoxStateName.Text;
-            //OptimizationLoop.SaveStateFrequency = (int)numUpDownSaveStateFrequency.Value;
             OptimizationLoop.BolMaximize = radioButtonMaximize.Checked;
             OptimizationLoop.ExpertSettings = textBoxExpertSettings.Text.Replace(Environment.NewLine, " ");
             OptimizationLoop.PresetIndex = comboBoxPresets.SelectedIndex;
@@ -121,10 +131,41 @@ namespace FrOG
             buttonOK.Enabled = true;
             buttonCancel.Enabled = true;
             buttonStop.Enabled = false;
+
+            //Enable GUI
+            GH_DocumentEditor ghCanvas = Owner as GH_DocumentEditor;
+            ghCanvas.EnableUI();
+        }
+
+        //Handle Background Worker Progress
+        private void ProgressChangedHandler(object sender, ProgressChangedEventArgs e)
+        {
+            switch (e.ProgressPercentage)
+            {
+                case 0:
+                    var parameters = (IList<decimal>)e.UserState;
+                    UpdateGrasshopper(parameters);
+                    break;
+                case 100:
+                    var values = (List<double>)e.UserState;
+                    UpdateChart(values);
+                    break;
+            }
+        }
+
+        //Update Grasshopper from here
+        private void UpdateGrasshopper(IList<decimal> parameters)
+        {
+            GrasshopperStatus = GrasshopperStates.RequestProcessing;
+
+            //Calculate Grasshoper
+            _frogComponent.GhInOut.NewSolution(parameters);
+
+            GrasshopperStatus = GrasshopperStates.RequestProcessed;
         }
 
         //Chart
-        private void UpdateChart(object sender, ProgressChangedEventArgs e)
+        private void UpdateChart(List<double> values)
         {
             //Clear chart data
             bestValueChart.Series.Clear();
@@ -142,7 +183,6 @@ namespace FrOG
             bestValueChart.Series.Add(series1);
 
             //Update chart data
-            var values = (List<double>)e.UserState;
             var iteration = values.Count;
 
             for (var i = 0; i < iteration; i++)

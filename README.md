@@ -1,15 +1,23 @@
 FrOG: Framework for Optimization in Grasshopper
 <br>Branch now needs C#6
-<br><br>Developed by Thomas Wortmann and Akbar Zuardin with contributions by Dimitry Demin and Christoph Waibel.
+<br>What's different in this branch as compared to the main? Nothing much yet! I'm using it to link [this library](https://github.com/christophwaibel/MetaheuristicsLibrary) to Grasshopper.
+<br>Solvers implemented:
+* Sampler (needs pre-defined input sequence. E.g. useful for sensitivity analysis)
+* Simple Genetic Algorithm (SGA)
+* Simple Particle Swarm Optimization (PSO)
+* Fully Informed PSO (FIPS)
+* Simple Evolution Strategy
+<br>For details regarding the solvers, please have a look at [this thesis](https://www.research-collection.ethz.ch/handle/20.500.11850/307674)
 <br><br>
-This project intends to make it easier to link optimization algorithms to Grasshopper (http://www.grasshopper3d.com/).
-FrOG handles all interactions with Grasshopper and provides a GUI. 
-<br><br><br>
 How to use the component: 
 <br>
 - Copy the [FrOG.gha](https://github.com/christophwaibel/FrOG/blob/VS2012/FrOG/bin/FrOG.gha) and the [MetaheuristicsLibrary.dll](https://github.com/christophwaibel/FrOG/blob/VS2012/FrOG/bin/MetaheuristicsLibrary.dll) into your Grasshopper components folder (open Rhino, enter "GrasshopperFolders", "Components" into your console).
 - Start Rhino Grasshopper, find the FrOG component under Params, Util 
 
+<br><br>Developed by Thomas Wortmann and Akbar Zuardin with contributions by Dimitry Demin and Christoph Waibel.
+<br><br>
+This project intends to make it easier to link optimization algorithms to Grasshopper (http://www.grasshopper3d.com/).
+FrOG handles all interactions with Grasshopper and provides a GUI. 
 <br><br>
 
 

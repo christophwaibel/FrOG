@@ -10,8 +10,8 @@
 <br><br>
 How to use the component: 
 <br>
-- Copy the [FrOG.gha](https://github.com/christophwaibel/FrOG/blob/VS2012/FrOG/bin/FrOG.gha) and the [MetaheuristicsLibrary.dll](https://github.com/christophwaibel/FrOG/blob/VS2012/FrOG/bin/MetaheuristicsLibrary.dll) into your Grasshopper components folder (open Rhino, enter "GrasshopperFolders", "Components" into your console).
-- Start Rhino Grasshopper, find the FrOG component under Params, Util 
+* Copy the [FrOG.gha](https://github.com/christophwaibel/FrOG/blob/VS2012/FrOG/bin/FrOG.gha) and the [MetaheuristicsLibrary.dll](https://github.com/christophwaibel/FrOG/blob/VS2012/FrOG/bin/MetaheuristicsLibrary.dll) into your Grasshopper components folder (open Rhino, enter "GrasshopperFolders", "Components" into your console).
+* Start Rhino Grasshopper, find the FrOG component under Params, Util 
 
 <br><br>Updates
 * (10.Dec.'18) Branch now needs C#6

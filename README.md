@@ -8,8 +8,7 @@
 * Simple Evolution Strategy
 <br><br>For details regarding the solvers, please have a look at [this thesis](https://www.research-collection.ethz.ch/handle/20.500.11850/307674)
 <br><br>
-How to use the component: 
-<br>
+<br>How to use the component: 
 * Copy the [FrOG.gha](https://github.com/christophwaibel/FrOG/blob/VS2012/FrOG/bin/FrOG.gha) and the [MetaheuristicsLibrary.dll](https://github.com/christophwaibel/FrOG/blob/VS2012/FrOG/bin/MetaheuristicsLibrary.dll) into your Grasshopper components folder (open Rhino, enter "GrasshopperFolders", "Components" into your console).
 * Start Rhino Grasshopper, find the FrOG component under Params, Util 
 

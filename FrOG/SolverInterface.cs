@@ -8,7 +8,7 @@ namespace FrOG
     internal static class SolverList
     {
         //Add solvers here
-        public static List<ISolver> GetSolverList = new List<ISolver>() { new Hillclimber(), new Opt_SGA(), new Opt_PSO(), new Opt_ES() };
+        public static List<ISolver> GetSolverList = new List<ISolver>() { new I_simpleGA(), new I_PSO(), new I_simpleES(), new I_Sampling() };
 
         public static List<string> PresetNames
         {

@@ -1,4 +1,4 @@
-FrOG: Framework for Optimization in Grasshopper
+**FrOG: Framework for Optimization in Grasshopper**
 <br><br>What's different in this branch as compared to the main? Nothing much yet! I'm using it to link [this library](https://github.com/christophwaibel/MetaheuristicsLibrary) to Grasshopper.
 <br>Solvers implemented:
 * Sampler (needs pre-defined input sequence. E.g. useful for sensitivity analysis)

@@ -6,7 +6,7 @@
 * Simple Particle Swarm Optimization (PSO)
 * Fully Informed PSO (FIPS)
 * Simple Evolution Strategy
-<br>For details regarding the solvers, please have a look at [this thesis](https://www.research-collection.ethz.ch/handle/20.500.11850/307674)
+<br><br>For details regarding the solvers, please have a look at [this thesis](https://www.research-collection.ethz.ch/handle/20.500.11850/307674)
 <br><br>
 How to use the component: 
 <br>

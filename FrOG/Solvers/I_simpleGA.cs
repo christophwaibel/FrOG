@@ -46,19 +46,6 @@ namespace FrOG.Solvers
                 {"maxgen", 10000},
                 { "itermax", 10000},
                 { "seed", 1},
-                { "popsize", 14},
-                { "k", 21.93823},
-                { "pcross", 0.99301},
-                { "pmut", 1},
-                { "d", 0.01159},
-                { "r", 0.15604},
-                { "elite", 2}
-            };
-
-            var SGA_Settings_n4_B = new Dictionary<string, double>{
-                {"maxgen", 10000},
-                { "itermax", 10000},
-                { "seed", 1},
                 { "popsize", 6},
                 { "k", 36.7352},
                 { "pcross", 0.87624},
@@ -68,6 +55,18 @@ namespace FrOG.Solvers
                 { "elite", 1}
             };
 
+            var SGA_Settings_n4_B = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 14},
+                { "k", 21.93823},
+                { "pcross", 0.99301},
+                { "pmut", 1},
+                { "d", 0.01159},
+                { "r", 0.15604},
+                { "elite", 2}
+            };
 
             var SGA_Settings_n10_A = new Dictionary<string, double>{
                 {"maxgen", 10000},
@@ -123,22 +122,7 @@ namespace FrOG.Solvers
                 { "elite", 1}
             };
 
-            //cluster 1
             var SGA_Settings_n13_A = new Dictionary<string, double>{
-                {"maxgen", 10000},
-                { "itermax", 10000},
-                { "seed", 1},
-                { "popsize", 6},
-                { "k", 71.23471},
-                { "pcross", 0.96031},
-                { "pmut", 0.97181},
-                { "d", 0.01},
-                { "r", 0.28861},
-                { "elite", 1}
-            };
-
-            //cluster 2
-            var SGA_Settings_n13_B = new Dictionary<string, double>{
                 {"maxgen", 10000},
                 { "itermax", 10000},
                 { "seed", 1},
@@ -151,6 +135,18 @@ namespace FrOG.Solvers
                 { "elite", 1}
             };
 
+            var SGA_Settings_n13_B = new Dictionary<string, double>{
+                {"maxgen", 10000},
+                { "itermax", 10000},
+                { "seed", 1},
+                { "popsize", 6},
+                { "k", 71.23471},
+                { "pcross", 0.96031},
+                { "pmut", 0.97181},
+                { "d", 0.01},
+                { "r", 0.28861},
+                { "elite", 1}
+            };
 
             var SGA_Settings_n18_A = new Dictionary<string, double>{
                 {"maxgen", 10000},

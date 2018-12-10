@@ -47,13 +47,12 @@ namespace FrOG.Solvers
                 {"seed", 1}
             };
 
-            //cluster 3
             var FIPSO_settings_n4_A = new Dictionary<string, double>
             {
                 {"popsize", 10},
-                {"chi", 0.39852},
-                {"phi", 9.24731},
-                {"v0max", 0.01699},
+                {"chi", 0.19208},
+                {"phi", 18.69223},
+                {"v0max", 9.72903},
                 {"pxupdatemode", 0},
                 {"psomode", 0},
                 {"phi1", 0},        //not used
@@ -62,13 +61,12 @@ namespace FrOG.Solvers
                 {"seed", 1}
             };
 
-            //cluster 2
             var FIPSO_settings_n4_B = new Dictionary<string, double>
             {
                 {"popsize", 10},
-                {"chi", 0.19208},
-                {"phi", 18.69223},
-                {"v0max", 9.72903},
+                {"chi", 0.39852},
+                {"phi", 9.24731},
+                {"v0max", 0.01699},
                 {"pxupdatemode", 0},
                 {"psomode", 0},
                 {"phi1", 0},        //not used
@@ -107,20 +105,6 @@ namespace FrOG.Solvers
 
             var FIPSO_settings_n11_A = new Dictionary<string, double>
             {
-                {"popsize", 17},
-                {"chi", 0.28648},
-                {"phi", 12.90676},
-                {"v0max", 0.30475},
-                {"pxupdatemode", 0},
-                {"psomode", 0},
-                {"phi1", 0},        //not used
-                {"phi2", 0},        //not used
-                { "itermax", 10000},
-                {"seed", 1}
-            };
-
-            var FIPSO_settings_n11_B = new Dictionary<string, double>
-            {
                 {"popsize", 19},
                 {"chi", 0.30146},
                 {"phi", 12.17548},
@@ -133,7 +117,20 @@ namespace FrOG.Solvers
                 {"seed", 1}
             };
 
-            //cluster 1
+            var FIPSO_settings_n11_B = new Dictionary<string, double>
+            {
+                {"popsize", 17},
+                {"chi", 0.28648},
+                {"phi", 12.90676},
+                {"v0max", 0.30475},
+                {"pxupdatemode", 0},
+                {"psomode", 0},
+                {"phi1", 0},        //not used
+                {"phi2", 0},        //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
             var FIPSO_settings_n13_A = new Dictionary<string, double>
             {
                 {"popsize", 18},
@@ -221,6 +218,20 @@ namespace FrOG.Solvers
 
             var FIPSO_settings_n35_A = new Dictionary<string, double>
             {
+                {"popsize", 4},
+                {"chi", 0.25452 },
+                {"phi", 12.42113    },
+                {"v0max", 0.30566},
+                {"pxupdatemode", 1},
+                {"psomode", 0},
+                {"phi1", 0},        //not used
+                {"phi2", 0},        //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
+            var FIPSO_settings_n35_B = new Dictionary<string, double>
+            {
                 {"popsize", 29},
                 {"chi", 0.6803	},
                 {"phi", 2.58573	},
@@ -232,21 +243,6 @@ namespace FrOG.Solvers
                 { "itermax", 10000},
                 {"seed", 1}
             };
-
-            var FIPSO_settings_n35_B = new Dictionary<string, double>
-            {
-                {"popsize", 4},
-                {"chi", 0.25452	},
-                {"phi", 12.42113	},
-                {"v0max", 0.30566},
-                {"pxupdatemode", 1},
-                {"psomode", 0},
-                {"phi1", 0},        //not used
-                {"phi2", 0},        //not used
-                { "itermax", 10000},
-                {"seed", 1}
-            };
-
             #endregion
 
             #region PSO
@@ -264,23 +260,7 @@ namespace FrOG.Solvers
                 {"seed", 1}
             };
 
-            //cluster 1
             var PSO_settings_n4_A = new Dictionary<string, double>
-            {
-                {"popsize", 17},
-                {"chi", 0.28889},
-                {"v0max", 0},
-                {"pxupdatemode", 0},
-                {"psomode", 2},
-                {"phi1", 4.745},
-                {"phi2",4.75793},
-                {"phi", 0},         //not used
-                { "itermax", 10000},
-                {"seed", 1}
-            };
-
-            //cluster 2
-            var PSO_settings_n4_B = new Dictionary<string, double>
             {
                 {"popsize", 15},
                 {"chi", 0.33667},
@@ -294,7 +274,35 @@ namespace FrOG.Solvers
                 {"seed", 1}
             };
 
+            var PSO_settings_n4_B = new Dictionary<string, double>
+            {
+                {"popsize", 17},
+                {"chi", 0.28889},
+                {"v0max", 0},
+                {"pxupdatemode", 0},
+                {"psomode", 2},
+                {"phi1", 4.745},
+                {"phi2",4.75793},
+                {"phi", 0},         //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
             var PSO_settings_n10_A = new Dictionary<string, double>
+            {
+                {"popsize", 20},
+                {"chi", 0.10542 },
+                {"v0max", 18.76201},
+                {"pxupdatemode", 0},
+                {"psomode", 1},
+                {"phi1", 1.42516    },
+                {"phi2",2.03202},
+                {"phi", 0},         //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
+            var PSO_settings_n10_B = new Dictionary<string, double>
             {
                 {"popsize", 25},
                 {"chi", 0.35724	},
@@ -303,20 +311,6 @@ namespace FrOG.Solvers
                 {"psomode", 2},
                 {"phi1", 4.77251	},
                 {"phi2",3.5374},
-                {"phi", 0},         //not used
-                { "itermax", 10000},
-                {"seed", 1}
-            };
-
-            var PSO_settings_n10_B = new Dictionary<string, double>
-            {
-                {"popsize", 20},
-                {"chi", 0.10542	},
-                {"v0max", 18.76201},
-                {"pxupdatemode", 0},
-                {"psomode", 1},
-                {"phi1", 1.42516	},
-                {"phi2",2.03202},
                 {"phi", 0},         //not used
                 { "itermax", 10000},
                 {"seed", 1}
@@ -382,20 +376,6 @@ namespace FrOG.Solvers
 
             var PSO_settings_n18_A = new Dictionary<string, double>
             {
-                {"popsize", 4},
-                {"chi", 0.23885},
-                {"v0max", 0.00012},
-                {"pxupdatemode", 1},
-                {"psomode", 2},
-                {"phi1", 5},
-                {"phi2",4.93995},
-                {"phi", 0},         //not used
-                { "itermax", 10000},
-                {"seed", 1}
-            };
-
-            var PSO_settings_n18_B = new Dictionary<string, double>
-            {
                 {"popsize", 48},
                 {"chi", 0.03098},
                 {"v0max", 0.09856},
@@ -403,6 +383,20 @@ namespace FrOG.Solvers
                 {"psomode", 1},
                 {"phi1", 0},
                 {"phi2",1.84805},
+                {"phi", 0},         //not used
+                { "itermax", 10000},
+                {"seed", 1}
+            };
+
+            var PSO_settings_n18_B = new Dictionary<string, double>
+            {
+                {"popsize", 4},
+                {"chi", 0.23885},
+                {"v0max", 0.00012},
+                {"pxupdatemode", 1},
+                {"psomode", 2},
+                {"phi1", 5},
+                {"phi2",4.93995},
                 {"phi", 0},         //not used
                 { "itermax", 10000},
                 {"seed", 1}

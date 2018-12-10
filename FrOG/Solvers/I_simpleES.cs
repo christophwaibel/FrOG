@@ -78,13 +78,13 @@ namespace FrOG.Solvers
             var ES_Settings_n10_A = new Dictionary<string, double>{
                 { "itermax", 10000},
                 { "seed", 1},
-                {"popsize", 13},
-                {"lambda", 7},          //offspring
-                {"roh", 8},             //mixing nr.
+                {"popsize", 20},
+                {"lambda", 6},          //offspring
+                {"roh", 6},             //mixing nr.
                 {"x0sampling", 0},      // 0 = uniform, 1 = gaussian
-                {"stepsize0", 9.78386		}, //initial stepsize s0
-                {"stepsize", 0.13504	},   //stepsize s
-                {"tauc", 1.81098},      //learning rate tau
+                {"stepsize0", 0.01      }, //initial stepsize s0
+                {"stepsize", 0.97151},   //stepsize s
+                {"tauc", 1.84719},      //learning rate tau
                 {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
                 {"pmut_int", 0.5}       //mutation probability, only for integer
             };
@@ -92,13 +92,13 @@ namespace FrOG.Solvers
             var ES_Settings_n10_B = new Dictionary<string, double>{
                 { "itermax", 10000},
                 { "seed", 1},
-                {"popsize", 20},
-                {"lambda", 6},          //offspring
-                {"roh", 6},             //mixing nr.
+                {"popsize", 13},
+                {"lambda", 7},          //offspring
+                {"roh", 8},             //mixing nr.
                 {"x0sampling", 0},      // 0 = uniform, 1 = gaussian
-                {"stepsize0", 0.01		}, //initial stepsize s0
-                {"stepsize", 0.97151},   //stepsize s
-                {"tauc", 1.84719},      //learning rate tau
+                {"stepsize0", 9.78386		}, //initial stepsize s0
+                {"stepsize", 0.13504	},   //stepsize s
+                {"tauc", 1.81098},      //learning rate tau
                 {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
                 {"pmut_int", 0.5}       //mutation probability, only for integer
             };
@@ -134,20 +134,6 @@ namespace FrOG.Solvers
             var ES_Settings_n13_A = new Dictionary<string, double>{
                 { "itermax", 10000},
                 { "seed", 1},
-                {"popsize", 3},
-                {"lambda", 1},          //offspring
-                {"roh", 2},             //mixing nr.
-                {"x0sampling", 0},      // 0 = uniform, 1 = gaussian
-                {"stepsize0", 10}, //initial stepsize s0
-                {"stepsize", 1.83897},   //stepsize s
-                {"tauc", 0.01},      //learning rate tau
-                {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
-                {"pmut_int", 0.5}       //mutation probability, only for integer
-            };
-
-            var ES_Settings_n13_B = new Dictionary<string, double>{
-                { "itermax", 10000},
-                { "seed", 1},
                 {"popsize", 16},
                 {"lambda", 6},          //offspring
                 {"roh", 7},             //mixing nr.
@@ -155,6 +141,20 @@ namespace FrOG.Solvers
                 {"stepsize0", 0.01}, //initial stepsize s0
                 {"stepsize", 0.41785},   //stepsize s
                 {"tauc", 1.53637},      //learning rate tau
+                {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
+                {"pmut_int", 0.5}       //mutation probability, only for integer
+            };
+
+            var ES_Settings_n13_B = new Dictionary<string, double>{
+                { "itermax", 10000},
+                { "seed", 1},
+                {"popsize", 3},
+                {"lambda", 1},          //offspring
+                {"roh", 2},             //mixing nr.
+                {"x0sampling", 0},      // 0 = uniform, 1 = gaussian
+                {"stepsize0", 10}, //initial stepsize s0
+                {"stepsize", 1.83897},   //stepsize s
+                {"tauc", 0.01},      //learning rate tau
                 {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
                 {"pmut_int", 0.5}       //mutation probability, only for integer
             };
@@ -214,9 +214,22 @@ namespace FrOG.Solvers
                 {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
                 {"pmut_int", 0.5}       //mutation probability, only for integer
             };
-
-
+            
             var ES_Settings_n35_A = new Dictionary<string, double>{
+                { "itermax", 10000},
+                { "seed", 1},
+                {"popsize", 4},
+                {"lambda", 1},          //offspring
+                {"roh", 2},             //mixing nr.
+                {"x0sampling", 0},      // 0 = uniform, 1 = gaussian
+                {"stepsize0", 9.45934   }, //initial stepsize s0
+                {"stepsize", 0.15398    },   //stepsize s
+                {"tauc", 0.01},      //learning rate tau
+                {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
+                {"pmut_int", 0.5}       //mutation probability, only for integer
+            };
+
+            var ES_Settings_n35_B = new Dictionary<string, double>{
                 { "itermax", 10000},
                 { "seed", 1},
                 {"popsize", 22},
@@ -226,20 +239,6 @@ namespace FrOG.Solvers
                 {"stepsize0", 0.01}, //initial stepsize s0
                 {"stepsize", 0.04086	},   //stepsize s
                 {"tauc", 0.11277},      //learning rate tau
-                {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
-                {"pmut_int", 0.5}       //mutation probability, only for integer
-            };
-
-            var ES_Settings_n35_B = new Dictionary<string, double>{
-                { "itermax", 10000},
-                { "seed", 1},
-                {"popsize", 4},
-                {"lambda", 1},          //offspring
-                {"roh", 2},             //mixing nr.
-                {"x0sampling", 0},      // 0 = uniform, 1 = gaussian
-                {"stepsize0", 9.45934	}, //initial stepsize s0
-                {"stepsize", 0.15398	},   //stepsize s
-                {"tauc", 0.01},      //learning rate tau
                 {"selmode", 1},         //mating selection mode. 0 = random, 1 = tournament
                 {"pmut_int", 0.5}       //mutation probability, only for integer
             };

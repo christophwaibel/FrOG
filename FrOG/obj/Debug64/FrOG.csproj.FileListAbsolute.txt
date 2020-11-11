@@ -25,3 +25,4 @@ C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\obj\Debug64\FrOG.csproj.CopyComple
 C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\obj\Debug64\FrOG.dll
 C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\obj\Debug64\FrOG.pdb
 C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\bin\MetaheuristicsLibrary.dll
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\obj\Debug64\FrOG.csprojAssemblyReference.cache

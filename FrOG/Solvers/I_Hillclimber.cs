@@ -80,7 +80,7 @@ namespace FrOG.Solvers
                     var seed = (int)settings["seed"];
                     var stepsize = settings["stepsize"];
                     var itermax = (int)settings["itermax"];
-                    var hc = new MetaheuristicsLibrary.SolversSO.Hillclimber(lb, ub, integer, itermax, eval, seed, stepsize);
+                    var hc = new MetaheuristicsLibrary.SingleObjective.Hillclimber(lb, ub, integer, itermax, eval, seed, stepsize);
                     hc.solve();
                     Xopt = hc.get_Xoptimum();
                     Fxopt = hc.get_fxoptimum();

@@ -46,8 +46,9 @@
     <Reference Include="GalapagosLibrary">
       <HintPath>..\GalapagosLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="MetaheuristicsLibrary">
-      <HintPath>..\..\MetaheuristicsLibrary-master\MetaheuristicsLibrary\bin\Debug\MetaheuristicsLibrary.dll</HintPath>
+    <Reference Include="MetaheuristicsLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MetaheuristicsLibrary\MetaheuristicsLibrary\bin\Debug\MetaheuristicsLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

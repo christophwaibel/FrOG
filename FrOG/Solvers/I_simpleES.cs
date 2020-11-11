@@ -329,7 +329,7 @@ namespace FrOG.Solvers
                     }
                     int itermax = (int)settings["itermax"];
 
-                    var es = new MetaheuristicsLibrary.SolversSO.SimpleES(lb, ub, integer, itermax, eval, seed, ESsettings);
+                    var es = new MetaheuristicsLibrary.SingleObjective.EvolutionStrategy(lb, ub, integer, itermax, eval, seed, ESsettings);
                     es.solve();
                     Xopt = es.get_Xoptimum();
                     Fxopt = es.get_fxoptimum();

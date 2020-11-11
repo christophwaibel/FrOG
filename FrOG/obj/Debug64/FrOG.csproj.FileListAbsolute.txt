@@ -14,3 +14,14 @@ C:\Users\Christoph\Documents\Visual Studio 2015\Projects\FrOG\FrOG\obj\Debug64\F
 C:\Users\Christoph\Documents\Visual Studio 2015\Projects\FrOG\FrOG\obj\Debug64\FrOG.csproj.GenerateResource.Cache
 C:\Users\Christoph\Documents\Visual Studio 2015\Projects\FrOG\FrOG\obj\Debug64\FrOG.dll
 C:\Users\Christoph\Documents\Visual Studio 2015\Projects\FrOG\FrOG\obj\Debug64\FrOG.pdb
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\bin\FrOG.dll
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\bin\FrOG.pdb
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\bin\GalapagosLibrary.dll
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\bin\MetaheuristicsLibrary.pdb
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\obj\Debug64\FrOG.OptimizationWindow.resources
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\obj\Debug64\FrOG.csproj.GenerateResource.cache
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\obj\Debug64\FrOG.csproj.CoreCompileInputs.cache
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\obj\Debug64\FrOG.csproj.CopyComplete
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\obj\Debug64\FrOG.dll
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\obj\Debug64\FrOG.pdb
+C:\Users\Christoph\Documents\GitHub\FrOG\FrOG\bin\MetaheuristicsLibrary.dll

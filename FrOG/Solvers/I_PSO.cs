@@ -566,7 +566,7 @@ namespace FrOG.Solvers
                     }
                     int itermax = (int)settings["itermax"];
 
-                    var pso = new MetaheuristicsLibrary.SolversSO.PSO(lb, ub, integer, itermax, eval, seed, PSOsettings);
+                    var pso = new MetaheuristicsLibrary.SingleObjective.ParticleSwarmOptimization(lb, ub, integer, itermax, eval, seed, PSOsettings);
                     pso.solve();
                     Xopt = pso.get_Xoptimum();
                     Fxopt = pso.get_fxoptimum();

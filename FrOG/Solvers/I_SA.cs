@@ -105,7 +105,7 @@ namespace FrOG.Solvers
                     }
                     int itermax = (int)settings["itermax"];
 
-                    var ga = new MetaheuristicsLibrary.SolversSO.SimpleGA(lb, ub, integer, itermax, eval, seed, GAsettings);
+                    var ga = new MetaheuristicsLibrary.SingleObjective.GeneticAlgorithm(lb, ub, integer, itermax, eval, seed, GAsettings);
                     ga.solve();
                     Xopt = ga.get_Xoptimum();
                     Fxopt = ga.get_fxoptimum();
